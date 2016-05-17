@@ -4,6 +4,8 @@ Refinery::Core::Engine.routes.draw do
 
     # Override Devise's other routes for convenience methods.
     devise_scope :authentication_devise_user do
+      put "/#{Refinery::Core.backend_route}/password_update",
+          to: "authentication/devise/passwords#update", as: :password_update
       get "/#{Refinery::Core.backend_route}/password",
           to: "authentication/devise/passwords#edit", as: :password
       get "/#{Refinery::Core.backend_route}/login",
